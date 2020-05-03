@@ -1,23 +1,25 @@
 
 package guru.springframework.api.domain;
 
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Location implements Serializable {
+public class Location {
 
-    private String street;
+    private Street street;
     private String city;
     private String state;
+    private String country;
     private String postcode;
+    private Coordinates coordinates;
+    private Timezone timezone;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public String getStreet() {
+    public Street getStreet() {
         return street;
     }
 
-    public void setStreet(String street) {
+    public void setStreet(Street street) {
         this.street = street;
     }
 
@@ -37,12 +39,36 @@ public class Location implements Serializable {
         this.state = state;
     }
 
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
     public String getPostcode() {
         return postcode;
     }
 
     public void setPostcode(String postcode) {
         this.postcode = postcode;
+    }
+
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(Coordinates coordinates) {
+        this.coordinates = coordinates;
+    }
+
+    public Timezone getTimezone() {
+        return timezone;
+    }
+
+    public void setTimezone(Timezone timezone) {
+        this.timezone = timezone;
     }
 
     public Map<String, Object> getAdditionalProperties() {

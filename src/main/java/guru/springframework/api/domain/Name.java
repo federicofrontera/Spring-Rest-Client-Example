@@ -1,11 +1,10 @@
 
 package guru.springframework.api.domain;
 
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Name implements Serializable {
+public class Name {
 
     private String title;
     private String first;

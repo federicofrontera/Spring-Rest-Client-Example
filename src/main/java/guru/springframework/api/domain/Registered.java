@@ -1,30 +1,29 @@
 
 package guru.springframework.api.domain;
 
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Job implements Serializable {
+public class Registered {
 
-    private String title;
-    private String company;
+    private String date;
+    private Integer age;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public String getTitle() {
-        return title;
+    public String getDate() {
+        return date;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public String getCompany() {
-        return company;
+    public Integer getAge() {
+        return age;
     }
 
-    public void setCompany(String company) {
-        this.company = company;
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public Map<String, Object> getAdditionalProperties() {

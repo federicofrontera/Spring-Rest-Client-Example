@@ -1,21 +1,29 @@
 
 package guru.springframework.api.domain;
 
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Billing implements Serializable {
+public class Street {
 
-    private Card card;
+    private Integer number;
+    private String name;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public Card getCard() {
-        return card;
+    public Integer getNumber() {
+        return number;
     }
 
-    public void setCard(Card card) {
-        this.card = card;
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Map<String, Object> getAdditionalProperties() {

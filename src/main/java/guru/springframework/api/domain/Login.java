@@ -1,18 +1,27 @@
 
 package guru.springframework.api.domain;
 
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Login implements Serializable {
+public class Login {
 
+    private String uuid;
     private String username;
     private String password;
+    private String salt;
     private String md5;
     private String sha1;
     private String sha256;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
 
     public String getUsername() {
         return username;
@@ -28,6 +37,14 @@ public class Login implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 
     public String getMd5() {

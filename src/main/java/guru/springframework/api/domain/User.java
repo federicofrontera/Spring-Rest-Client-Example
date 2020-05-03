@@ -1,22 +1,23 @@
 
 package guru.springframework.api.domain;
 
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class User implements Serializable {
+public class User {
 
     private String gender;
     private Name name;
     private Location location;
     private String email;
     private Login login;
+    private Dob dob;
+    private Registered registered;
     private String phone;
-    private Job job;
-    private Billing billing;
-    private String language;
-    private String currency;
+    private String cell;
+    private Id id;
+    private Picture picture;
+    private String nat;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String getGender() {
@@ -59,6 +60,22 @@ public class User implements Serializable {
         this.login = login;
     }
 
+    public Dob getDob() {
+        return dob;
+    }
+
+    public void setDob(Dob dob) {
+        this.dob = dob;
+    }
+
+    public Registered getRegistered() {
+        return registered;
+    }
+
+    public void setRegistered(Registered registered) {
+        this.registered = registered;
+    }
+
     public String getPhone() {
         return phone;
     }
@@ -67,36 +84,36 @@ public class User implements Serializable {
         this.phone = phone;
     }
 
-    public Job getJob() {
-        return job;
+    public String getCell() {
+        return cell;
     }
 
-    public void setJob(Job job) {
-        this.job = job;
+    public void setCell(String cell) {
+        this.cell = cell;
     }
 
-    public Billing getBilling() {
-        return billing;
+    public Id getId() {
+        return id;
     }
 
-    public void setBilling(Billing billing) {
-        this.billing = billing;
+    public void setId(Id id) {
+        this.id = id;
     }
 
-    public String getLanguage() {
-        return language;
+    public Picture getPicture() {
+        return picture;
     }
 
-    public void setLanguage(String language) {
-        this.language = language;
+    public void setPicture(Picture picture) {
+        this.picture = picture;
     }
 
-    public String getCurrency() {
-        return currency;
+    public String getNat() {
+        return nat;
     }
 
-    public void setCurrency(String currency) {
-        this.currency = currency;
+    public void setNat(String nat) {
+        this.nat = nat;
     }
 
     public Map<String, Object> getAdditionalProperties() {
