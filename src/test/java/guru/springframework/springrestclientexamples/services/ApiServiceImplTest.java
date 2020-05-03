@@ -10,25 +10,25 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ApiServiceImplTest {
+
     @Autowired
     ApiService apiService;
 
     @Before
-    public void setUp() throws Exception{
-
+    public void setUp() throws Exception {
     }
 
+
     @Test
-    public void testGetUsers() throws Exception{
+    public void testGetUsers() throws Exception {
 
         List<User> users = apiService.getUsers(3);
 
         assertEquals(3, users.size());
     }
-
 }
