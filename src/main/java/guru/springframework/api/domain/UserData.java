@@ -2,7 +2,7 @@ package guru.springframework.api.domain;
 
 import java.util.List;
 
-public class UserResults {
+public class UserData {
     List<User> results;
 
     public List<User> getResults() {

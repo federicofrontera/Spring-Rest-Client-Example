@@ -1,11 +1,15 @@
 package guru.springframework.springrestclientexamples.services;
 
 import guru.springframework.api.domain.User;
-import guru.springframework.api.domain.UserResults;
+import guru.springframework.api.domain.UserData;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.util.UriComponentsBuilder;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
@@ -30,7 +34,18 @@ public class ApiServiceImpl implements  ApiService {
                 .fromUriString(api_url)
                 .queryParam("results", results);
 
-        UserResults userData = restTemplate.getForObject(uriComponentsBuilder.toUriString(), UserResults.class);
+        UserData userData = restTemplate.getForObject(uriComponentsBuilder.toUriString(), UserData.class);
         return userData.getResults();
+    }
+
+    @Override
+    public Flux<User> getUsers(Mono<Integer> results) {
+        return WebClient.create(api_url)
+                .get()
+                .uri(uriBuilder -> uriBuilder.queryParam("results", results.block()).build())
+                .accept(MediaType.APPLICATION_JSON)
+                .exchange()
+                .flatMap(resp -> resp.bodyToMono(UserData.class))
+                .flatMapIterable(UserData::getResults);
     }
 }
