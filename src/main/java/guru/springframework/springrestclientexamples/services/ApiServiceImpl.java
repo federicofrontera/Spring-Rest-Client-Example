@@ -2,8 +2,10 @@ package guru.springframework.springrestclientexamples.services;
 
 import guru.springframework.api.domain.User;
 import guru.springframework.api.domain.UserResults;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
@@ -14,15 +16,21 @@ import java.util.List;
 public class ApiServiceImpl implements  ApiService {
 
     private RestTemplate restTemplate;
+    private final String api_url;
 
-    public ApiServiceImpl(RestTemplate restTemplate) {
+    public ApiServiceImpl(RestTemplate restTemplate, @Value("${api.url}")String api_url) {
         this.restTemplate = restTemplate;
+        this.api_url = api_url;
     }
 
     @Override
-    public List<User> getUsers(Integer limit) {
+    public List<User> getUsers(Integer results) {
 
-        UserResults userData = restTemplate.getForObject("https://randomuser.me/api/?results=" + limit, UserResults.class);
+        UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder
+                .fromUriString(api_url)
+                .queryParam("results", results);
+
+        UserResults userData = restTemplate.getForObject(uriComponentsBuilder.toUriString(), UserResults.class);
         return userData.getResults();
     }
 }
